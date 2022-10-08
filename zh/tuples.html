@@ -216,7 +216,7 @@ module example {
 </code></pre>
 <p>有关更多详细信息，请参阅 <a href="variables.html">Move 变量</a>。</p>
 <h2 id="子类型"><a class="header" href="#子类型">子类型</a></h2>
-<p>除了引用，元组是唯一在 Move 中具有<a href="https://zh.wikipedia.org/wiki/%E5%AD%90%E7%B1%BB%E5%9E%8B">子类型（subtyping）</a>的类型。元组只有在具有引用的子类型（以协变方式）的意义上才具有子类型。</p>
+<p>除了引用，元组是唯一在 Move 中具有<a href="https://zh.wikipedia.org/wiki/%E5%AD%90%E7%B1%BB%E5%9E%8B">子类型</a>的类型。元组只有在具有引用的子类型（以协变方式）的意义上才具有子类型。</p>
 <p>例如:</p>
 <pre><code class="language-move">let x: &amp;u64 = &amp;0;
 let y: &amp;mut u64 = &amp;mut 1;

@@ -429,7 +429,7 @@ address 0x42 {
 </code></pre>
 <h3 id="返回类型-return-type"><a class="header" href="#返回类型-return-type">返回类型 (Return type)</a></h3>
 <p>After the parameters, a function specifies its return type.</p>
-<p>在参数之后，函数指定其返回类型。</p>
+<p>函数在参数之后指定返回类型。</p>
 <pre><code class="language-move">fun zero(): u64 { 0 }
 </code></pre>
 <p>Here <code>: u64</code> indicates that the function's return type is <code>u64</code>.</p>
@@ -439,20 +439,20 @@ address 0x42 {
 <pre><code class="language-move">fun one_two_three(): (u64, u64, u64) { (0, 1, 2) }
 </code></pre>
 <p>If no return type is specified, the function has an implicit return type of unit <code>()</code>. These functions are equivalent</p>
-<p>如果未指定返回类型，则该函数具有隐式返回类型单值 <code>()</code>。这些函数是等价的：</p>
+<p>如果函数未指定返回类型，则该函数隐式返回unit <code>()</code> 类型  。以下这些函数是等价的</p>
 <pre><code class="language-move">fun just_unit(): () { () }
 fun just_unit() { () }
 fun just_unit() { }
 </code></pre>
 <p><code>script</code> functions must have a return type of unit <code>()</code></p>
-<p><code>script</code> 函数的返回类型必须为单值 <code>()</code>（不能是任何其他类型，例如 <code>bool</code>、<code>u64</code> 等，注者注）：</p>
-<pre><code class="language-move">script {
+<p><code>script</code> 函数的返回类型必须为 unit <code>()</code> (不能是任何其他类型, 例如 <code>bool</code>, <code>u64</code> 等，注者注)。</p>
+<pre><code class="language-move=">script {
     fun do_nothing() {
     }
 }
 </code></pre>
 <p>As mentioned in the <a href="tuples.html">tuples section</a>, these tuple &quot;values&quot; are virtual and do not exist at runtime. So for a function that returns unit <code>()</code>, it will not be returning any value at all during execution.</p>
-<p>如<a href="./tuples.html">元组部分</a>所述，这些元组“值”是虚拟的（virtual），且在运行时不存在。因此，对于返回单值 <code>()</code> 的函数，它在执行期间根本不会返回任何值。</p>
+<p>如 <a href="./chapter_9_tuples.html">元组部分</a> 中所述，这些元组“值”是模拟(virtual)的，且在运行时不存在。所以对于返回 unit <code>()</code>的函数，它在执行期间根本不会返回任何值。</p>
 <h3 id="function-body-函数体"><a class="header" href="#function-body-函数体">Function body (函数体)</a></h3>
 <p>A function's body is an expression block. The return value of the function is the last value in the sequence</p>
 <p>函数体是一个表达式块。函数的返回值是序列中最后一个表达式的值。</p>

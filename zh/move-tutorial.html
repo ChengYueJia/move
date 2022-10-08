@@ -260,7 +260,7 @@ In this case, the <code>BasicCoin</code> module can only be published under <cod
 模块是 Move 语言的代码块, 并且它使用指定的地址(address)进行定义 -- 模块只能在该地址下发布。
 当前 <code>BasicCoin</code> 模块只能被发布在 <code>0xCAFE</code> 地址下。</p>
 <p>Let's now take a look at the next part of this file where we define a <a href="https://move-language.github.io/move/structs-and-resources.html">struct</a> to represent a <code>Coin</code> with a given <code>value</code>:</p>
-<p>再看这个文件的下一部分，这里定义了一个具有字段 <code>value</code> 的<a href="./structs-and-resources.html">结构体</a> <code>Coin</code>：</p>
+<p>再看这个文件的下一部分，这里定义了一个具有字段 <code>value</code> 的<a href="./chapter_16_structs-and-resources.html">结构体</a> <code>Coin</code>：</p>
 <pre><code>module 0xCAFE::BasicCoin {
     struct Coin has key {
         value: u64,
@@ -291,7 +291,7 @@ a <code>value</code> to mint.</li>
 <p>Let's make sure it builds! This can be done with the <code>build</code> command from within the package folder (<a href="https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_1/BasicCoin/"><code>step_1/BasicCoin</code></a>):</p>
 <p>让我们来看看这个函数和它的含义:</p>
 <ul>
-<li>此函数需要一个<a href="./signer.html"><code>signer</code></a>参数 -- 表示不可伪造的 token 受此特定地址的控制; 和一个需要铸造的数量参数 <code>value</code>。</li>
+<li>此函数需要一个<a href="https://move-language.github.io/move/signer.html"><code>signer</code></a>参数 -- 表示不可伪造的 token 受此特定地址的控制; 和一个需要铸造的数量参数 <code>value</code>。</li>
 <li>此函数使用给定的参数值铸造一个 <code>Coin</code>，然后通过 <code>move_to</code> 操作将其保存在(全局存储中)给定的 <code>account</code> 账户下。</li>
 </ul>
 <p>我们需要确保它真的执行，这可以通过在包文件夹(<a href="https://github.com/move-language/move/tree/main/language/documentation/tutorial/step_1/BasicCoin/"><code>step_1/BasicCoin</code></a>)下的运行 <code>build</code> 命令来完成：</p>
@@ -528,7 +528,7 @@ struct Balance has key {
 <pre><code>public(script) fun transfer(from: signer, to: address, amount: u64) acquires Balance { ... }
 </code></pre>
 <p>Read more on Move function visibilities <a href="https://move-language.github.io/move/functions.html#visibility">here</a>.</p>
-<p>关于函数可见性的更多信息，请参阅<a href="./functions.html#visibility">Move function visibilities</a>。</p>
+<p>关于函数可见性的更多信息，请参阅<a href="./chapter_15_functions.html#visibility">Move function visibilities</a>。</p>
 </details>
 <details>
 <summary>与 Ethereum/Solidity 的比较 (Comparison with Ethereum/Solidity)</summary>
@@ -596,7 +596,7 @@ It is important to note that Move is transactional in its execution -- so if an 
 }
 </code></pre>
 <p>At the beginning of the method, we assert that the withdrawing account has enough balance. We then use <code>borrow_global_mut</code> to get a mutable reference to the global storage, and <code>&amp;mut</code> is used to create a <a href="https://move-language.github.io/move/references.html">mutable reference</a> to a field of a struct. We then modify the balance through this mutable reference and return a new coin with the withdrawn amount.</p>
-<p>在方法开始，我们断言提款账户有足够的余额。然后我们使用 <code>borrow_global_mut</code> 来获得全局存储的可变引用，并用 <code>&amp;mut</code> 创建结构体字段的<a href="./references.html">可变引用</a>。然后我们通过这个可变引用修改余额并返回一个带有提取金额的新代币。</p>
+<p>在方法开始，我们断言提款账户有足够的余额。然后我们使用 <code>borrow_global_mut</code> 来获得全局存储的可变引用，并用 <code>&amp;mut</code> 创建结构体字段的<a href="./chapter_8_references.html">可变引用</a>。然后我们通过这个可变引用修改余额并返回一个带有提取金额的新代币。</p>
 </details>
 <h3 id="练习-exercises-1"><a class="header" href="#练习-exercises-1">练习 (Exercises)</a></h3>
 <p>There are two <code>TODO</code>s in our module, left as exercises for the reader:</p>
