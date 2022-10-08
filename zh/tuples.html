@@ -1,0 +1,340 @@
+<!DOCTYPE HTML>
+<html lang="zh" class="sidebar-visible no-js">
+    <head>
+        <!-- Book generated using mdBook -->
+        <meta charset="UTF-8">
+        <title>元组和单值（Tuples and Unit） - 《Move Book 中文版》</title>
+
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <meta name="theme-color" content="#ffffff" />
+
+        <link rel="shortcut icon" href="">
+        <link rel="stylesheet" href="css/variables.css">
+        <link rel="stylesheet" href="css/general.css">
+        <link rel="stylesheet" href="css/chrome.css">
+        <link rel="stylesheet" href="css/print.css" media="print">
+
+        <!-- Fonts -->
+        <link rel="stylesheet" href="FontAwesome/css/font-awesome.css">
+        <link href="https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800" rel="stylesheet" type="text/css">
+        <link href="https://fonts.googleapis.com/css?family=Source+Code+Pro:500" rel="stylesheet" type="text/css">
+
+        <!-- Highlight.js Stylesheets -->
+        <link rel="stylesheet" href="highlight.css">
+        <link rel="stylesheet" href="tomorrow-night.css">
+        <link rel="stylesheet" href="ayu-highlight.css">
+
+        <!-- Custom theme stylesheets -->
+
+    </head>
+    <body class="light">
+        <!-- Provide site root to javascript -->
+        <script type="text/javascript">
+            var path_to_root = "";
+            var default_theme = "light";
+        </script>
+
+        <!-- Work around some values being stored in localStorage wrapped in quotes -->
+        <script type="text/javascript">
+            try {
+                var theme = localStorage.getItem('mdbook-theme');
+                var sidebar = localStorage.getItem('mdbook-sidebar');
+
+                if (theme.startsWith('"') && theme.endsWith('"')) {
+                    localStorage.setItem('mdbook-theme', theme.slice(1, theme.length - 1));
+                }
+
+                if (sidebar.startsWith('"') && sidebar.endsWith('"')) {
+                    localStorage.setItem('mdbook-sidebar', sidebar.slice(1, sidebar.length - 1));
+                }
+            } catch (e) { }
+        </script>
+
+        <!-- Set the theme before any content is loaded, prevents flash -->
+        <script type="text/javascript">
+            var theme;
+            try { theme = localStorage.getItem('mdbook-theme'); } catch(e) { }
+            if (theme === null || theme === undefined) { theme = default_theme; }
+            document.body.className = theme;
+            document.querySelector('html').className = theme + ' js';
+        </script>
+
+        <!-- Hide / unhide sidebar before it is displayed -->
+        <script type="text/javascript">
+            var html = document.querySelector('html');
+            var sidebar = 'hidden';
+            if (document.body.clientWidth >= 1080) {
+                try { sidebar = localStorage.getItem('mdbook-sidebar'); } catch(e) { }
+                sidebar = sidebar || 'visible';
+            }
+            html.classList.remove('sidebar-visible');
+            html.classList.add("sidebar-" + sidebar);
+        </script>
+
+        <nav id="sidebar" class="sidebar" aria-label="Table of contents">
+            <div class="sidebar-scrollbox">
+                <ol class="chapter"><li class="chapter-item expanded affix "><a href="introduction.html">引言（Introduction）</a></li><li class="chapter-item expanded "><a href="modules-and-scripts.html"><strong aria-hidden="true">1.</strong> 模块和脚本（Modules and Scripts）</a></li><li class="chapter-item expanded "><a href="move-tutorial.html"><strong aria-hidden="true">2.</strong> Move 教程（Move Tutorial）</a></li><li class="chapter-item expanded "><a href="integers.html"><strong aria-hidden="true">3.</strong> 整数（Integers）</a></li><li class="chapter-item expanded "><a href="bool.html"><strong aria-hidden="true">4.</strong> 布尔类型（Bool）</a></li><li class="chapter-item expanded "><a href="address.html"><strong aria-hidden="true">5.</strong> 地址（Address）</a></li><li class="chapter-item expanded "><a href="vector.html"><strong aria-hidden="true">6.</strong> 向量（Vector）</a></li><li class="chapter-item expanded "><a href="signer.html"><strong aria-hidden="true">7.</strong> 签名（Signer）</a></li><li class="chapter-item expanded "><a href="references.html"><strong aria-hidden="true">8.</strong> 引用（References）</a></li><li class="chapter-item expanded "><a href="tuples.html" class="active"><strong aria-hidden="true">9.</strong> 元组和单值（Tuples and Unit）</a></li><li class="chapter-item expanded "><a href="variables.html"><strong aria-hidden="true">10.</strong> 局部变量和作用域（Local Variables and Scopes）</a></li><li class="chapter-item expanded "><a href="equality.html"><strong aria-hidden="true">11.</strong> 等式（Equality）</a></li><li class="chapter-item expanded "><a href="abort-and-assert.html"><strong aria-hidden="true">12.</strong> 中止和断言（Abort and Assert）</a></li><li class="chapter-item expanded "><a href="conditionals.html"><strong aria-hidden="true">13.</strong> 条件语句（Conditionals）</a></li><li class="chapter-item expanded "><a href="loops.html"><strong aria-hidden="true">14.</strong> 循环（While and Loop）</a></li><li class="chapter-item expanded "><a href="functions.html"><strong aria-hidden="true">15.</strong> 函数（Functions）</a></li><li class="chapter-item expanded "><a href="structs-and-resources.html"><strong aria-hidden="true">16.</strong> 结构体和资源（Structs and Resources）</a></li><li class="chapter-item expanded "><a href="constants.html"><strong aria-hidden="true">17.</strong> 常量（Constants）</a></li><li class="chapter-item expanded "><a href="generics.html"><strong aria-hidden="true">18.</strong> 泛型（Generics）</a></li><li class="chapter-item expanded "><a href="abilities.html"><strong aria-hidden="true">19.</strong> 类型能力（Type Abilities）</a></li><li class="chapter-item expanded "><a href="uses.html"><strong aria-hidden="true">20.</strong> 导入和别名（Uses and Aliases）</a></li><li class="chapter-item expanded "><a href="friends.html"><strong aria-hidden="true">21.</strong> 友元函数（Friends）</a></li><li class="chapter-item expanded "><a href="packages.html"><strong aria-hidden="true">22.</strong> 程序包（Packages）</a></li><li class="chapter-item expanded "><a href="unit-testing.html"><strong aria-hidden="true">23.</strong> 单元测试（Unit Tests）</a></li><li class="chapter-item expanded "><a href="global-storage-structure.html"><strong aria-hidden="true">24.</strong> 全局存储结构（Global Storage Structure）</a></li><li class="chapter-item expanded "><a href="global-storage-operators.html"><strong aria-hidden="true">25.</strong> 全局存储操作（Global Storage Operators）</a></li><li class="chapter-item expanded "><a href="standard-library.html"><strong aria-hidden="true">26.</strong> 标准库（Standard Library）</a></li><li class="chapter-item expanded "><a href="coding-conventions.html"><strong aria-hidden="true">27.</strong> Move 编码约定（Coding Conventions）</a></li><li class="chapter-item expanded "><a href="contribute.html"><strong aria-hidden="true">28.</strong> 中文版贡献指南</a></li></ol>
+            </div>
+            <div id="sidebar-resize-handle" class="sidebar-resize-handle"></div>
+        </nav>
+
+        <div id="page-wrapper" class="page-wrapper">
+
+            <div class="page">
+                                <div id="menu-bar" class="menu-bar">
+                    <div id="menu-bar-sticky-container">
+                        <div class="left-buttons">
+                            <button id="sidebar-toggle" class="icon-button" type="button" title="Toggle Table of Contents" aria-label="Toggle Table of Contents" aria-controls="sidebar">
+                                <i class="fa fa-bars"></i>
+                            </button>
+                            <button id="theme-toggle" class="icon-button" type="button" title="Change theme" aria-label="Change theme" aria-haspopup="true" aria-expanded="false" aria-controls="theme-list">
+                                <i class="fa fa-paint-brush"></i>
+                            </button>
+                            <ul id="theme-list" class="theme-popup" aria-label="Themes" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="light">Light (default)</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="rust">Rust</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="coal">Coal</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="navy">Navy</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="ayu">Ayu</button></li>
+                            </ul>
+                            <button id="search-toggle" class="icon-button" type="button" title="Search. (Shortkey: s)" aria-label="Toggle Searchbar" aria-expanded="false" aria-keyshortcuts="S" aria-controls="searchbar">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </div>
+
+                        <h1 class="menu-title">《Move Book 中文版》</h1>
+
+                        <div class="right-buttons">
+                            <button id="lang-toggle" class="icon-button" type="button" title="Change language" aria-label="Change language" aria-haspopup="true" aria-expanded="false" aria-controls="lang-list">
+                                <i class="fa fa-globe"></i>
+                            </button>
+                            <ul id="lang-list" class="theme-popup" style="left: auto;" aria-label="Languages" role="menu">
+                                <li role="none"><button role="menuitem" class="theme" id="en">English</button></li>
+                                <li role="none"><button role="menuitem" class="theme" id="zh">Chinese</button></li>
+                            </ul>
+                            <a href="print.html" title="Print this book" aria-label="Print this book">
+                                <i id="print-button" class="fa fa-print"></i>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="search-wrapper" class="hidden">
+                    <form id="searchbar-outer" class="searchbar-outer">
+                        <input type="search" name="search" id="searchbar" name="searchbar" placeholder="Search this book ..." aria-controls="searchresults-outer" aria-describedby="searchresults-header">
+                    </form>
+                    <div id="searchresults-outer" class="searchresults-outer hidden">
+                        <div id="searchresults-header" class="searchresults-header"></div>
+                        <ul id="searchresults">
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Apply ARIA attributes after the sidebar and the sidebar toggle button are added to the DOM -->
+                <script type="text/javascript">
+                    document.getElementById('sidebar-toggle').setAttribute('aria-expanded', sidebar === 'visible');
+                    document.getElementById('sidebar').setAttribute('aria-hidden', sidebar !== 'visible');
+                    Array.from(document.querySelectorAll('#sidebar a')).forEach(function(link) {
+                        link.setAttribute('tabIndex', sidebar === 'visible' ? 0 : -1);
+                    });
+                </script>
+
+                <div id="content" class="content">
+                    <main>
+                        <h1 id="元组和单值"><a class="header" href="#元组和单值">元组和单值</a></h1>
+<p>Move 不完全支持元组，因为人们可能期望像来自另一种语言的元组一样将它们作为<a href="https://zh.wikipedia.org/wiki/%E9%A0%AD%E7%AD%89%E7%89%A9%E4%BB%B6">头等值（即头等公民）</a>。但是，为了支持多个返回值，Move 具有类似元组的表达式。这些表达式在运行时不会产生具体的值（字节码中没有元组），因此它们非常有限：它们只能出现在表达式中（通常在函数的返回位置）；它们不能绑定到局部变量；它们不能存储在结构中；元组类型不能用于实例化泛型。</p>
+<p>类似地，<a href="https://zh.wikipedia.org/wiki/%E5%8D%95%E5%80%BC%E7%B1%BB%E5%9E%8B">单值（unit）<code>()</code></a> 是 Move 源语言创建的一种以表达式为基础的类型。单值 <code>()</code> 不会产生任何运行时值。我们可以认为单值 <code>()</code> 是一个空元组，适用于元组的任何限制也适用于单值。</p>
+<p>考虑到这些限制，在语言中使用元组可能会感觉很奇怪。但其他语言中，元组最常见的用例之一是函数 —— 允许函数返回多个值。一些语言通过强制用户编写包含多个返回值的结构来解决这个问题。但是在 Move 中，您不能将引用放在<a href="structs-and-resources.html">结构体</a>中。这需要 Move 支持多个返回值。这些多个返回值都在字节码级别被压入到堆栈中。在源码级别，这些多个返回值使用元组表示。</p>
+<h2 id="字面量"><a class="header" href="#字面量">字面量</a></h2>
+<p>元组（tuple）是由括号内以逗号分隔的表达式列表创建的。</p>
+<div class="table-wrapper"><table><thead><tr><th>语法</th><th>类型</th><th>描述</th></tr></thead><tbody>
+<tr><td><code>()</code></td><td><code>(): ()</code></td><td>单值、空元组或 0 元素元组</td></tr>
+<tr><td><code>(e1, ..., en)</code></td><td><code>(e1, ..., en): (T1, ..., Tn)</code> 其中 <code>e_i: Ti</code> 满足 <code>0 &lt; i &lt;= n</code> and <code>n &gt; 0</code></td><td>n 元组、n 元素元组、带有 n 个元素的元组</td></tr>
+</tbody></table>
+</div>
+<p>注意 <code>(e)</code> 没有类型 <code>(e): (t)</code>，换句话说，没有一个元素的元组。如果括号内只有一个元素，则括号仅用于消除歧义，不带有任何其他特殊含义。</p>
+<p>有时，具有两个元素的元组称为“二元组（pairs）”，而具有三个元素的元组称为“三元组（triples）”。</p>
+<h3 id="例子"><a class="header" href="#例子">例子</a></h3>
+<pre><code class="language-move">address 0x42 {
+module example {
+    // 这三个函数都是等价的
+
+    // 当没有提供返回类型时，假定为 `()`
+    fun returns_unit_1() { }
+
+    // 空表达式块中存在隐式 () 值
+    fun returns_unit_2(): () { }
+
+    // `returns_unit_1` 和 `returns_unit_2` 的显式版本
+    fun returns_unit_3(): () { () }
+
+
+    fun returns_3_values(): (u64, bool, address) {
+        (0, false, @0x42)
+    }
+    fun returns_4_values(x: &amp;u64): (&amp;u64, u8, u128, vector&lt;u8&gt;) {
+        (x, 0, 1, b&quot;foobar&quot;)
+    }
+}
+}
+</code></pre>
+<h2 id="操作"><a class="header" href="#操作">操作</a></h2>
+<p>目前唯一可以对元组执行的操作是解构（destructuring）。</p>
+<h3 id="解构"><a class="header" href="#解构">解构</a></h3>
+<p>对于任何大小的元组，它们可以在 <code>let</code> 绑定或赋值中被解构。</p>
+<p>例如：</p>
+<pre><code class="language-move">address 0x42 {
+module example {
+    // 这三个函数都是等价的
+    fun returns_unit() {}
+    fun returns_2_values(): (bool, bool) { (true, false) }
+    fun returns_4_values(x: &amp;u64): (&amp;u64, u8, u128, vector&lt;u8&gt;) { (x, 0, 1, b&quot;foobar&quot;) }
+
+    fun examples(cond: bool) {
+        let () = ();
+        let (x, y): (u8, u64) = (0, 1);
+        let (a, b, c, d) = (@0x0, 0, false, b&quot;&quot;);
+
+        () = ();
+        (x, y) = if (cond) (1, 2) else (3, 4);
+        (a, b, c, d) = (@0x1, 1, true, b&quot;1&quot;);
+    }
+
+    fun examples_with_function_calls() {
+        let () = returns_unit();
+        let (x, y): (bool, bool) = returns_2_values();
+        let (a, b, c, d) = returns_4_values(&amp;0);
+
+        () = returns_unit();
+        (x, y) = returns_2_values();
+        (a, b, c, d) = returns_4_values(&amp;1);
+    }
+}
+}
+</code></pre>
+<p>有关更多详细信息，请参阅 <a href="variables.html">Move 变量</a>。</p>
+<h2 id="子类型"><a class="header" href="#子类型">子类型</a></h2>
+<p>除了引用，元组是唯一在 Move 中具有<a href="https://zh.wikipedia.org/wiki/%E5%AD%90%E7%B1%BB%E5%9E%8B">子类型（subtyping）</a>的类型。元组只有在具有引用的子类型（以协变方式）的意义上才具有子类型。</p>
+<p>例如:</p>
+<pre><code class="language-move">let x: &amp;u64 = &amp;0;
+let y: &amp;mut u64 = &amp;mut 1;
+
+// (&amp;u64, &amp;mut u64) 是 (&amp;u64, &amp;u64) 的子类型
+// 因为 &amp;mut u64 是 &amp;u64 的子类型
+let (a, b): (&amp;u64, &amp;u64) = (x, y);
+
+// (&amp;mut u64, &amp;mut u64) 是 (&amp;u64, &amp;u64) 的子类型
+// 因为 &amp;mut u64 是 &amp;u64 的子类型
+let (c, d): (&amp;u64, &amp;u64) = (y, y);
+
+// 错误！(&amp;u64, &amp;mut u64) 不是 (&amp;mut u64, &amp;mut u64) 的子类型
+// 因为 &amp;u64 不是 &amp;mut u64 的子类型
+let (e, f): (&amp;mut u64, &amp;mut u64) = (x, y);
+</code></pre>
+<h2 id="所有权"><a class="header" href="#所有权">所有权</a></h2>
+<p>如上所述，元组值在运行时并不真正存在。由于这个原因，目前它们不能存储到局部变量中（但这个功能很可能很快就会出现）。因此，元组目前只能移动，因为复制它们需要先将它们放入局部变量中。</p>
+
+                    </main>
+
+                    <nav class="nav-wrapper" aria-label="Page navigation">
+                        <!-- Mobile navigation buttons -->
+                            <a rel="prev" href="references.html" class="mobile-nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                                <i class="fa fa-angle-left"></i>
+                            </a>
+
+                            <a rel="next" href="variables.html" class="mobile-nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                                <i class="fa fa-angle-right"></i>
+                            </a>
+
+                        <div style="clear: both"></div>
+                    </nav>
+                </div>
+            </div>
+
+            <nav class="nav-wide-wrapper" aria-label="Page navigation">
+                    <a href="references.html" class="nav-chapters previous" title="Previous chapter" aria-label="Previous chapter" aria-keyshortcuts="Left">
+                        <i class="fa fa-angle-left"></i>
+                    </a>
+
+                    <a href="variables.html" class="nav-chapters next" title="Next chapter" aria-label="Next chapter" aria-keyshortcuts="Right">
+                        <i class="fa fa-angle-right"></i>
+                    </a>
+            </nav>
+
+        </div>
+
+
+
+
+        <script src="elasticlunr.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="mark.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="searcher.js" type="text/javascript" charset="utf-8"></script>
+
+        <script src="clipboard.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="highlight.js" type="text/javascript" charset="utf-8"></script>
+        <script src="book.js" type="text/javascript" charset="utf-8"></script>
+
+        <!-- Custom JS scripts -->
+
+
+        <script type="text/javascript">
+        var langs = [
+            'zh',
+            'en'
+        ];
+
+        (function langs() {
+            var html = document.querySelector('html');
+            var langToggleButton = document.getElementById('lang-toggle');
+            var langPopup = document.getElementById('lang-list');
+
+            function showLangs() {
+                langPopup.style.display = 'block';
+                langToggleButton.setAttribute('aria-expanded', true);
+            }
+
+            function hideLangs() {
+                langPopup.style.display = 'none';
+                langToggleButton.setAttribute('aria-expanded', false);
+                langToggleButton.focus();
+            }
+
+            langToggleButton.addEventListener('click', function () {
+                if (langPopup.style.display === 'block') {
+                    hideLangs();
+                } else {
+                    showLangs();
+                }
+            });
+
+            langPopup.addEventListener('click', function (e) {
+                var lang = e.target.id || e.target.parentElement.id;
+                window.location.pathname = window.location.pathname
+                    .split('/')
+                    .map((s, idx) => {
+                        return idx == 2 ? lang : s;
+                    })
+                    .join('/');
+            });
+
+            langPopup.addEventListener('focusout', function(e) {
+                // e.relatedTarget is null in Safari and Firefox on macOS (see workaround below)
+                if (!!e.relatedTarget && !langToggleButton.contains(e.relatedTarget) && !langPopup.contains(e.relatedTarget)) {
+                    hideLangs();
+                }
+            });
+
+            // Should not be needed, but it works around an issue on macOS & iOS: https://github.com/rust-lang-nursery/mdBook/issues/628
+            document.addEventListener('click', function(e) {
+                if (langPopup.style.display === 'block' && !langToggleButton.contains(e.target) && !langPopup.contains(e.target)) {
+                    hideLangs();
+                }
+            });
+
+        })();
+        </script>
+
+    </body>
+</html>
