@@ -4230,9 +4230,9 @@ address 0x2 {
 </li>
 </ul>
 <h3 id="copy"><a class="header" href="#copy"><code>copy</code></a></h3>
-<p>The <code>copy</code> ability allows values of types with that ability to be copied. It gates the ability to copy values out of local variables with the <a href="variables.html#move-and-copy"><code>copy</code></a> operator and to copy values via references with <a href="references.html#%E9%80%9A%E8%BF%87%E5%BC%95%E7%94%A8%E8%AF%BB%E5%8F%96%E5%92%8C%E5%86%99%E5%85%A5">dereference <code>*e</code></a>.</p>
+<p>The <code>copy</code> ability allows values of types with that ability to be copied. It gates the ability to copy values out of local variables with the <a href="./variables.html#move-and-copy"><code>copy</code></a> operator and to copy values via references with <a href="./references.html#%E9%80%9A%E8%BF%87%E5%BC%95%E7%94%A8%E8%AF%BB%E5%8F%96%E5%92%8C%E5%86%99%E5%85%A5">dereference <code>*e</code></a>.</p>
 <p>If a value has <code>copy</code>, all values contained inside of that value have <code>copy</code>.</p>
-<p><code>copy</code> 能力允许具有此能力的类型的值被复制。 它限制了从本地变量通过 <a href="variables.html#move-and-copy"><code>copy</code></a>能力复制值以及通过 <a href="references.html#%E9%80%9A%E8%BF%87%E5%BC%95%E7%94%A8%E8%AF%BB%E5%8F%96%E5%92%8C%E5%86%99%E5%85%A5"><code>dereference *e</code></a>复制值这两种情况之外的复制操作。</p>
+<p><code>copy</code> 能力允许具有此能力的类型的值被复制。 它限制了从本地变量通过 <a href="./variables.html#move-and-copy"><code>copy</code></a>能力复制值以及通过 <a href="./references.html#%E9%80%9A%E8%BF%87%E5%BC%95%E7%94%A8%E8%AF%BB%E5%8F%96%E5%92%8C%E5%86%99%E5%85%A5"><code>dereference *e</code></a>复制值这两种情况之外的复制操作。</p>
 <p>如果一个值具有 <code>copy</code> 能力，那么这个值内部的所有值都有 <code>copy</code> 能力。</p>
 <h3 id="drop"><a class="header" href="#drop"><code>drop</code></a></h3>
 <p>The <code>drop</code> ability allows values of types with that ability to be dropped. By dropped, we mean that value is not transferred and is effectively destroyed as the Move program executes. As such, this ability gates the ability to ignore values in a multitude of locations, including:</p>
