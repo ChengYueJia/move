@@ -200,22 +200,22 @@
 <h3 id="copy"><a class="header" href="#copy"><code>copy</code></a></h3>
 <p>The <code>copy</code> ability allows values of types with that ability to be copied. It gates the ability to copy values out of local variables with the <a href="./variables.html#move-and-copy"><code>copy</code></a> operator and to copy values via references with <a href="./references.html#%E9%80%9A%E8%BF%87%E5%BC%95%E7%94%A8%E8%AF%BB%E5%8F%96%E5%92%8C%E5%86%99%E5%85%A5">dereference <code>*e</code></a>.</p>
 <p>If a value has <code>copy</code>, all values contained inside of that value have <code>copy</code>.</p>
-<p><code>copy</code> 能力允许具有此能力的类型的值被复制。 它限制了从本地变量通过 <a href="./variables.html#move-and-copy"><code>copy</code></a>能力复制值以及通过 <a href="./references.html#%E9%80%9A%E8%BF%87%E5%BC%95%E7%94%A8%E8%AF%BB%E5%8F%96%E5%92%8C%E5%86%99%E5%85%A5"><code>dereference *e</code></a>复制值这两种情况之外的复制操作。</p>
+<p><code>copy</code> 能力允许具有此能力的类型的值被复制。 它限制了从本地变量通过 <a href="./variables.html#.move-and-copy"><code>copy</code></a>能力复制值以及通过 <a href="./references.html#%E9%80%9A%E8%BF%87%E5%BC%95%E7%94%A8%E8%AF%BB%E5%8F%96%E5%92%8C%E5%86%99%E5%85%A5"><code>dereference *e</code></a>复制值这两种情况之外的复制操作。</p>
 <p>如果一个值具有 <code>copy</code> 能力，那么这个值内部的所有值都有 <code>copy</code> 能力。</p>
 <h3 id="drop"><a class="header" href="#drop"><code>drop</code></a></h3>
 <p>The <code>drop</code> ability allows values of types with that ability to be dropped. By dropped, we mean that value is not transferred and is effectively destroyed as the Move program executes. As such, this ability gates the ability to ignore values in a multitude of locations, including:</p>
 <ul>
 <li>not using the value in a local variable or parameter</li>
-<li>not using the value in a <a href="variables.html#expression-blocks">sequence via <code>;</code></a></li>
-<li>overwriting values in variables in <a href="variables.html#assignments">assignments</a></li>
-<li>overwriting values via references when <a href="references.html#reading-and-writing-through-references">writing <code>*e1 = e2</code></a>.</li>
+<li>not using the value in a <a href="./variables.html#expression-blocks">sequence via <code>;</code></a></li>
+<li>overwriting values in variables in <a href="./variables.html#assignments">assignments</a></li>
+<li>overwriting values via references when <a href="./references.html#reading-and-writing-through-references">writing <code>*e1 = e2</code></a>.</li>
 </ul>
 <p>If a value has <code>drop</code>, all values contained inside of that value have <code>drop</code>.</p>
 <p><code>drop</code> 能力允许类型的值被丢弃。丢弃的意思程序执行后值会被有效的销毁而不必被转移。因此，这个能力限制在多个位置忽略使用值的可能性，包括：</p>
 <ul>
 <li>未被使用的局部变量或者参数</li>
-<li>未被使用的 <a href="variables.html#expression-blocks"><code>sequence</code> via <code>;</code></a>中的值</li>
-<li>覆盖<a href="./chapter_10_variables.html#assignments">赋值(assignments)</a>变量中的值</li>
+<li>未被使用的 <a href="./variables.html#expression-blocks"><code>sequence</code> via <code>;</code></a>中的值</li>
+<li>覆盖<a href="./variables.html#assignments">赋值(assignments)</a>变量中的值</li>
 <li><a href="https://move-language.github.io/move/references.html#reading-and-writing-through-references">写入(writing) <code>*e1 = e2</code></a> 时通过引用覆盖的值。</li>
 </ul>
 <p>如果一个值具有 <code>drop</code> 能力，那么这个值内部的所有值都有 <code>drop</code> 能力。</p>
@@ -225,7 +225,7 @@
 <p><code>store</code> 能力允许具有这种能力的类型的值位于<a href="./global-storage-operators.html">全局存储</a>中的结构体(资源)内, <em>但不一定是</em> 全局存储中的顶级资源。这是唯一不直接限制操作的能力。相反，当(<code>store</code>)与 <code>key</code> 一起使用时，它对全局存储中的可行性进行把关。。</p>
 <p>如果一个值具有 <code>store</code> 能力，那么这个值内部的所有值都有 <code>store</code> 能力。</p>
 <h3 id="key"><a class="header" href="#key"><code>key</code></a></h3>
-<p>The <code>key</code> ability allows the type to serve as a key for <a href="global-storage-operators.html">global storage operations</a>. It gates all global storage operations, so in order for a type to be used with <code>move_to</code>, <code>borrow_global</code>, <code>move_from</code>, etc., the type must have the <code>key</code> ability. Note that the operations still must be used in the module where the <code>key</code> type is defined (in a sense, the operations are private to the defining module).</p>
+<p>The <code>key</code> ability allows the type to serve as a key for <a href="./global-storage-operators.html">global storage operations</a>. It gates all global storage operations, so in order for a type to be used with <code>move_to</code>, <code>borrow_global</code>, <code>move_from</code>, etc., the type must have the <code>key</code> ability. Note that the operations still must be used in the module where the <code>key</code> type is defined (in a sense, the operations are private to the defining module).</p>
 <p>If a value has <code>key</code>, all values contained inside of that value have <code>store</code>. This is the only ability with this sort of asymmetry.</p>
 <p><code>key</code> 能力允许此类型作为<a href="./global-storage-operators.html">全局存储</a>中的键。它会限制所有<a href="./global-storage-operators.html">全局存储</a>中的操作，因此一个类型如果与 <code>move_to</code>, <code>borrow_global</code>, <code>move_from</code> 等一起使用，那么这个类型必须具备 <code>key</code> 能力。请注意，这些操作仍然必须在定义 <code>key</code> 类型的模块中使用(从某种意义上说，这些操作是此模块的私有操作)。</p>
 <p>如果有一个值有 <code>key</code> 能力，那么这个值包含的所有字段值也都具有 <code>store</code> 能力，<code>key</code> 能力是唯一一个具有非对称的能力。</p>
@@ -250,7 +250,7 @@
 </ul>
 </li>
 </ul>
-<p>None of the primitive types have <code>key</code>, meaning none of them can be used directly with the <a href="global-storage-operators.html">global storage operations</a>.</p>
+<p>None of the primitive types have <code>key</code>, meaning none of them can be used directly with the <a href="./global-storage-operators.html">global storage operations</a>.</p>
 <p>几乎所有内置的基本类型具都有 <code>copy</code>，<code>drop</code>，以及 <code>store</code> 能力，<code>singer</code> 除外，它只有 <code>drop</code> 能力(原文是 <code>store</code> 有误，译者注)</p>
 <ul>
 <li><code>bool</code>, <code>u8</code>, <code>u64</code>, <code>u128</code>, <code>address</code> 都具有 <code>copy</code>, <code>drop</code>, 以及 <code>store</code> 能力。</li>
