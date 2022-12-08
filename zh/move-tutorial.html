@@ -513,8 +513,7 @@ blockchain state) is indexed by addresses. Under each address there are Move mod
     resources: Map&lt;address, Map&lt;ResourceType, ResourceValue&gt;&gt;
     modules: Map&lt;address, Map&lt;ModuleName, ModuleBytecode&gt;&gt;
 }
-<span class="boring">}
-</span></code></pre></pre>
+<span class="boring">}</span></code></pre></pre>
 <p>The Move resource storage under each address is a map from types to values. (An observant reader might observe that this means each address can only have one value of each type.) This conveniently provides us a native mapping indexed by addresses.
 In our <code>BasicCoin</code> module, we define the following <code>Balance</code> resource representing the number of coins each address holds:</p>
 <p>每个地址下的 Move 资源存储是一个类型到数值的映射。(细心的读者也许已经注意到每个地址, 每个类型下只能对应一个具体值)。这方便地为我们提供了一个按地址索引的本地映射。

@@ -212,7 +212,7 @@ write is a mutation that must occur on the left hand side of an equals.</p>
 <tr><td><code>*e1 = e2</code></td><td><code>()</code> where <code>e1: &amp;mut T</code> and <code>e2: T</code></td><td>Update the value in <code>e1</code> with <code>e2</code>.</td></tr>
 </tbody></table>
 </div><div class="table-wrapper"><table><thead><tr><th>语法</th><th>类型</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>&amp;e</code></td><td><code>T</code> 其中 <code>e</code> 为 <code>&amp;T</code> 或 <code>&amp;mut T</code></td><td>读取 <code>e</code> 所指向的值</td></tr>
+<tr><td><code>*e</code></td><td><code>T</code> 其中 <code>e</code> 为 <code>&amp;T</code> 或 <code>&amp;mut T</code></td><td>读取 <code>e</code> 所指向的值</td></tr>
 <tr><td><code>*e1 = e2</code></td><td>() 其中 <code>e1: &amp;mut T</code> 和 <code>e2: T</code></td><td>用 <code>e2</code> 更新 <code>e1</code> 中的值</td></tr>
 </tbody></table>
 </div>

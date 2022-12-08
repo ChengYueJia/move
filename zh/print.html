@@ -622,8 +622,7 @@ blockchain state) is indexed by addresses. Under each address there are Move mod
     resources: Map&lt;address, Map&lt;ResourceType, ResourceValue&gt;&gt;
     modules: Map&lt;address, Map&lt;ModuleName, ModuleBytecode&gt;&gt;
 }
-<span class="boring">}
-</span></code></pre></pre>
+<span class="boring">}</span></code></pre></pre>
 <p>The Move resource storage under each address is a map from types to values. (An observant reader might observe that this means each address can only have one value of each type.) This conveniently provides us a native mapping indexed by addresses.
 In our <code>BasicCoin</code> module, we define the following <code>Balance</code> resource representing the number of coins each address holds:</p>
 <p>每个地址下的 Move 资源存储是一个类型到数值的映射。(细心的读者也许已经注意到每个地址, 每个类型下只能对应一个具体值)。这方便地为我们提供了一个按地址索引的本地映射。
@@ -1411,7 +1410,7 @@ write is a mutation that must occur on the left hand side of an equals.</p>
 <tr><td><code>*e1 = e2</code></td><td><code>()</code> where <code>e1: &amp;mut T</code> and <code>e2: T</code></td><td>Update the value in <code>e1</code> with <code>e2</code>.</td></tr>
 </tbody></table>
 </div><div class="table-wrapper"><table><thead><tr><th>语法</th><th>类型</th><th>描述</th></tr></thead><tbody>
-<tr><td><code>&amp;e</code></td><td><code>T</code> 其中 <code>e</code> 为 <code>&amp;T</code> 或 <code>&amp;mut T</code></td><td>读取 <code>e</code> 所指向的值</td></tr>
+<tr><td><code>*e</code></td><td><code>T</code> 其中 <code>e</code> 为 <code>&amp;T</code> 或 <code>&amp;mut T</code></td><td>读取 <code>e</code> 所指向的值</td></tr>
 <tr><td><code>*e1 = e2</code></td><td>() 其中 <code>e1: &amp;mut T</code> 和 <code>e2: T</code></td><td>用 <code>e2</code> 更新 <code>e1</code> 中的值</td></tr>
 </tbody></table>
 </div>
@@ -5394,8 +5393,8 @@ Running Move unit tests
 [ PASS    ] 0x1::my_module::make_sure_zero_coin_fails
 Test result: OK. Total tests: 2; passed: 2; failed: 0
 </code></pre>
-<h4 id="-i-bound-或---instructions-bound-i-bound-or---instructions-bound"><a class="header" href="#-i-bound-或---instructions-bound-i-bound-or---instructions-bound"><code>-i &lt;bound&gt;</code> 或 <code>--instructions &lt;bound&gt;</code>（<code>-i &lt;bound&gt;</code> or <code>--instructions &lt;bound&gt;</code>）</a></h4>
-<p>This bounds the number of instructions that can be executed for any one test to <code>&lt;bound&gt;</code>:</p>
+<h4 id="-i-bound-或---gas_used-bound-i-bound-or---gas_used-bound"><a class="header" href="#-i-bound-或---gas_used-bound-i-bound-or---gas_used-bound"><code>-i &lt;bound&gt;</code> 或 <code>--gas_used &lt;bound&gt;</code>（<code>-i &lt;bound&gt;</code> or <code>--gas_used &lt;bound&gt;</code>）</a></h4>
+<p>This bounds the amount of gas that can be consumed for any one test to <code>&lt;bound&gt;</code>:</p>
 <p>调整测试指令限制为 <code>&lt;bound&gt;</code>：</p>
 <pre><code>$ move test -i 0
 CACHED MoveStdlib
@@ -5426,7 +5425,7 @@ Failures in 0x1::my_module:
 Test result: FAILED. Total tests: 3; passed: 0; failed: 3
 </code></pre>
 <h4 id="-s-或---statistics-s-or---statistics"><a class="header" href="#-s-或---statistics-s-or---statistics"><code>-s</code> 或 <code>--statistics</code>（<code>-s</code> or <code>--statistics</code>）</a></h4>
-<p>With these flags you can gather statistics about the tests run and report the runtime and instructions executed for each test. For example, if we wanted to see the statistics for the tests in the example above:</p>
+<p>With these flags you can gather statistics about the tests run and report the runtime and gas used for each test. For example, if we wanted to see the statistics for the tests in the example above:</p>
 <p>使用此参数你可以得到每个测试的运行报告及执行指令的统计信息。例如查看上述示例的统计数据：</p>
 <pre><code>$ move test -s
 CACHED MoveStdlib
@@ -5439,7 +5438,7 @@ Running Move unit tests
 Test Statistics:
 
 ┌────────────────────────────────────────────────┬────────────┬───────────────────────────┐
-│                   Test Name                    │    Time    │   Instructions Executed   │
+│                   Test Name                    │    Time    │   Gas Used   │
 ├────────────────────────────────────────────────┼────────────┼───────────────────────────┤
 │ 0x1::my_module::make_sure_non_zero_coin_passes │   0.009    │             1             │
 ├────────────────────────────────────────────────┼────────────┼───────────────────────────┤
